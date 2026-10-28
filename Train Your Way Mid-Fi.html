@@ -1,0 +1,312 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Train Your Way Mid-Fi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
+<style>
+/* Layout: one realistic phone, centered on a white page, with a screen label above it. Grayscale mid-fidelity, matching the interface storyboard. */
+:root {
+  --page: #ffffff;
+  --page-ink: #4a4a4f;
+  --frame: #1f1f21;
+  --screen: #fafafa;
+  --card: #ffffff;
+  --ink: #2f2f31;
+  --muted: #8a8a8e;
+  --line: #e1e1e4;
+  --light: #e8e8ea;
+  --btn: #3a3a3c;
+  --on-btn: #ffffff;
+  --gold: #f2c14e;
+  --font: "Nunito Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--page); color: var(--ink); font-family: var(--font); font-size: 15px;
+  padding-block: 20px 32px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.top { width: 100%; max-width: 375px; display: flex; justify-content: space-between; align-items: center; gap: 8px; color: var(--page-ink); font-size: 13px; }
+.top b { color: var(--ink); }
+.top button { font: inherit; font-weight: 700; background: var(--card); border: 1px solid var(--line); color: var(--ink); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+.phone { width: 100%; max-width: 375px; background: var(--frame); border-radius: 44px; padding: 10px; box-shadow: 0 16px 40px rgba(0,0,0,.18); }
+.screen { background: var(--screen); border-radius: 36px; height: 720px; max-height: 82vh; min-height: 600px; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+.status { display: flex; justify-content: space-between; align-items: center; padding: 14px 26px 6px; font-size: 13px; font-weight: 700; }
+.status .icons { display: flex; gap: 5px; align-items: center; }
+.status .icons i { display: block; background: var(--ink); border-radius: 2px; }
+.body { flex: 1; overflow-y: auto; padding: 6px 18px 18px; display: flex; flex-direction: column; gap: 12px; }
+.appbar { display: flex; justify-content: space-between; align-items: center; padding: 4px 0 6px; }
+.logo { font-size: 24px; font-weight: 800; letter-spacing: -.01em; }
+.bell { width: 22px; height: 22px; }
+.title { display: flex; align-items: center; gap: 6px; padding-bottom: 10px; border-bottom: 1px solid var(--line); font-size: 18px; font-weight: 800; }
+.back { font: inherit; font-size: 22px; line-height: 1; background: none; border: none; color: var(--ink); cursor: pointer; padding: 0 6px 0 0; }
+.label { font-size: 11px; font-weight: 800; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin: 2px 0 -4px; }
+.tile-card { background: var(--light); border-radius: 12px; padding: 12px 14px; }
+.tile-card b { display: block; font-size: 15px; }
+.muted { color: var(--muted); font-size: 13px; margin: 0; }
+.row { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; font: inherit; color: var(--ink);
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; cursor: pointer; }
+.row .dot { width: 30px; height: 30px; border-radius: 50%; background: var(--light); flex: none; display: grid; place-items: center; }
+.row .dot svg { width: 16px; height: 16px; stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.row .txt { flex: 1; min-width: 0; }
+.row .txt b { display: block; font-size: 15px; }
+.row .chev { color: var(--muted); font-size: 18px; }
+.row[aria-pressed="true"] { border: 2px solid var(--btn); padding: 11px 13px; background: #f1f1f2; }
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--light); border-radius: 10px; padding: 3px; gap: 3px; }
+.seg button { font: inherit; font-size: 13px; border: none; background: none; color: var(--ink); border-radius: 8px; padding: 8px 2px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--card); font-weight: 800; box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+.btn { font: inherit; font-weight: 800; font-size: 15px; width: 100%; padding: 13px; border-radius: 12px; border: none; background: var(--btn); color: var(--on-btn); cursor: pointer; }
+.btn.light { background: var(--light); color: var(--ink); }
+.btn.dashed { background: var(--card); color: var(--ink); border: 1.5px dashed #9a9a9e; }
+.btn.text { background: none; color: var(--muted); padding: 8px; }
+.btn:focus-visible, .row:focus-visible, .seg button:focus-visible, .nav button:focus-visible, .back:focus-visible, .top button:focus-visible { outline: 3px solid var(--muted); outline-offset: 2px; }
+.btn:active, .row:active { transform: translateY(1px); }
+.spacer { flex: 1; }
+.center { text-align: center; }
+.q { font-size: 17px; text-align: center; margin: 10px 0 0; line-height: 1.4; }
+.progress { height: 8px; background: var(--light); border-radius: 4px; overflow: hidden; }
+.progress span { display: block; height: 100%; background: var(--btn); border-radius: 4px; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; max-width: 230px; margin: 4px auto 0; }
+.grid i { aspect-ratio: 1; max-width: 100%; border-radius: 6px; background: var(--light); }
+.grid i.on { background: var(--btn); }
+.score { font-size: 20px; font-weight: 800; text-align: center; margin: 0; font-variant-numeric: tabular-nums; }
+.big { font-size: 20px; font-weight: 800; margin: 0; }
+.chart { display: flex; justify-content: center; align-items: flex-end; gap: 44px; height: 150px; border-bottom: 1px solid var(--line); padding-bottom: 0; }
+.chart div { display: flex; flex-direction: column; align-items: center; }
+.chart i { display: block; width: 52px; border-radius: 6px 6px 0 0; }
+.chart-labels { display: flex; justify-content: center; gap: 44px; font-size: 12px; color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; }
+.chart-labels span { width: 52px; }
+.note { background: var(--light); border-radius: 10px; padding: 10px 12px; font-size: 13px; margin: 0; }
+.bar-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 6px; font-variant-numeric: tabular-nums; }
+.checks { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.checks li::before { content: "✓  "; font-weight: 800; }
+.trophy { width: 46px; height: 46px; margin: 6px auto 0; display: block; }
+.banner { display: flex; gap: 8px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; font-weight: 700; font-size: 14px; }
+.nav { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: var(--card); padding: 8px 6px 18px; }
+.nav button { font: inherit; font-size: 11px; font-weight: 700; background: none; border: none; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; padding: 4px 0; }
+.nav button.on { color: var(--ink); }
+.nav svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.seg.two { grid-template-columns: 1fr 1fr; }
+.board { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.board li { display: flex; align-items: center; gap: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 9px 12px; font-variant-numeric: tabular-nums; }
+.board li.me { border: 2px solid var(--btn); padding: 8px 11px; }
+.board .rank { width: 16px; font-weight: 800; color: var(--muted); }
+.board .av { width: 30px; height: 30px; border-radius: 50%; background: var(--light); display: grid; place-items: center; font-weight: 800; font-size: 13px; }
+.board .nm { flex: 1; font-weight: 700; }
+.board .pts { color: var(--muted); font-size: 13px; }
+.toast { position: absolute; left: 18px; right: 18px; bottom: 90px; background: var(--btn); color: var(--on-btn); border-radius: 10px; padding: 10px 14px; text-align: center; font-size: 13px; font-weight: 700; }
+.foot { width: 100%; max-width: 375px; color: var(--page-ink); font-size: 14px; line-height: 1.5; text-align: center; }
+.foot p { margin: 0 0 6px; }
+.foot p:last-child { margin-bottom: 0; }
+.foot .why { color: var(--muted); font-size: 13px; }
+.foot .why b { color: var(--page-ink); }
+@media (prefers-reduced-motion: no-preference) { .body { animation: in .16s ease-out; } @keyframes in { from { opacity: .5; transform: translateX(6px); } } }
+</style>
+
+<div class="top">
+  <span id="label"></span>
+  <button type="button" id="restart">Restart</button>
+</div>
+<div class="phone"><div class="screen" id="screen"></div></div>
+<div class="foot" id="notes" aria-live="polite"></div>
+
+<script>
+const icon = {
+  brain: '<path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 3 5 3 3 0 0 0 5 1V5a3 3 0 0 0-3-1z"/><path d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-3 5 3 3 0 0 1-5 1"/>',
+  eye: '<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  bolt: '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+  puzzle: '<path d="M4 7h4a2 2 0 1 1 4 0h4v4a2 2 0 1 1 0 4v4H4z"/>',
+  target: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/>',
+  people: '<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M15 14.5c3 0 6 2 6 5"/>',
+  home: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/>',
+  games: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+  community: '<path d="M4 5h16v10H9l-5 4z"/>',
+  profile: '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>'
+};
+const svg = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${icon[k]}</svg>`;
+
+const state = { skill: "Memory", level: "Push", guess: "about", round: 1, cheered: false, tab: "goal", board: true };
+const FRIENDS = [["You", 4], ["Maya", 3], ["Jordan", 2], ["Sam", 1]];
+const SKILLS = [["Memory", "Spatial memory", "brain"], ["Attention", "Focus", "eye"], ["Speed", "Processing speed", "bolt"], ["Problem Solving", "Logic", "puzzle"]];
+const LEVELS = ["Warm Up", "Push", "Stretch"];
+const PATTERNS = [[1, 7, 8, 14], [2, 4, 11, 13], [0, 6, 9, 15]];
+const SCORES = [2150, 1980, 2240];
+
+function statusBar() {
+  return `<div class="status"><span>9:41</span><span class="icons"><i style="width:3px;height:6px"></i><i style="width:3px;height:9px"></i><i style="width:3px;height:12px"></i><i style="width:22px;height:11px;border-radius:3px;margin-left:4px"></i></span></div>`;
+}
+function nav(active) {
+  return `<nav class="nav" aria-label="App navigation">${[["Home","home"],["Games","games"],["Community","community"],["Profile","profile"]].map(([l, k]) => `<button type="button" class="${l === active ? "on" : ""}" data-nav="${l}">${svg(k)}${l}</button>`).join("")}</nav>`;
+}
+function appbar() {
+  return `<div class="appbar"><span class="logo">lumosity</span><svg class="bell" viewBox="0 0 24 24"><path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4z" fill="var(--gold)"/><circle cx="12" cy="21" r="2" fill="var(--gold)"/></svg></div>`;
+}
+function title(t, backTo) {
+  return `<div class="title"><button class="back" data-go="${backTo}" aria-label="Back">‹</button>${t}</div>`;
+}
+
+const screens = {
+  home: {
+    label: "1 · Home", nav: "Home",
+    note: "Tap Train Your Way to pick what to train.",
+    html: () => `${appbar()}
+      <div class="tile-card"><b>Today's Workout</b><p class="muted">3 games · set by the app · about 10 mins</p></div>
+      <button class="btn" data-toast="Today's Workout isn't part of this prototype">Start</button>
+      <button class="row" data-go="choose"><span class="dot">${svg("target")}</span><span class="txt"><b>Train Your Way</b><span class="muted">Pick your skill and level</span></span><span class="chev">›</span></button>
+      <button class="row" data-go="buddy"><span class="dot">${svg("people")}</span><span class="txt"><b>Brain Buddy</b><span class="muted">You 3/5 · Jordan 2/5 this week</span></span><span class="chev">›</span></button>`
+  },
+  choose: {
+    label: "2 · Choose a challenge",
+    note: "Pick a skill and level, then tap Next.",
+    html: () => `${title("Choose Your Challenge", "home")}
+      <p class="label">Skill</p>
+      ${SKILLS.map(([n, s, k]) => `<button class="row" data-skill="${n}" aria-pressed="${n === state.skill}"><span class="dot">${svg(k)}</span><span class="txt"><b>${n}</b><span class="muted">${s}</span></span></button>`).join("")}
+      <p class="label">Level</p>
+      <div class="seg">${LEVELS.map(l => `<button data-level="${l}" aria-pressed="${l === state.level}">${l}</button>`).join("")}</div>
+      <p class="muted center">Warm Up = easy win · Push = a bit harder · Stretch = a real challenge</p>
+      <button class="btn dashed" data-surprise>Surprise me</button>
+      <div class="spacer"></div>
+      <button class="btn" data-go="guess">Next</button>`
+  },
+  guess: {
+    label: "3 · Quick guess (optional)",
+    note: "Guess how you'll do, or tap Skip.",
+    html: () => `${title("Quick Guess", "choose")}
+      <p class="q">How do you think you'll do<br>on <b>${state.skill}</b> at <b>${state.level}</b>?</p>
+      <p class="muted center">Your best so far: 1,800</p>
+      <button class="btn light" data-guess="below">Below my best</button>
+      <button class="btn light" data-guess="about">About my best</button>
+      <button class="btn light" data-guess="beat">Beat my best</button>
+      <div class="spacer"></div>
+      <p class="muted center">Optional · one tap</p>
+      <button class="btn text" data-guess="skip">Skip</button>`
+  },
+  game: {
+    label: () => `4 · ${state.skill} Matrix (game ${state.round} of 3)`,
+    note: "Tap Done to see your score.",
+    html: () => `${title(`${state.skill} Matrix`, "guess")}
+      <div class="progress" aria-label="Session progress"><span style="width:${state.round / 3 * 100}%"></span></div>
+      <p class="muted center">Game ${state.round} of 3</p>
+      <div class="grid">${Array.from({ length: 16 }, (_, i) => `<i class="${PATTERNS[state.round - 1].includes(i) ? "on" : ""}"></i>`).join("")}</div>
+      <p class="center" style="margin:6px 0 0">Remember the highlighted tiles.</p>
+      <p class="score">Score: ${SCORES[state.round - 1].toLocaleString()}</p>
+      <div class="spacer"></div>
+      <button class="btn" data-go="best">Done</button>`
+  },
+  best: {
+    label: "5 · Personal Best Board",
+    note: "See how you did vs. your best, then tap Next game.",
+    html: () => {
+      const s = SCORES[state.round - 1], best = 1800, diff = s - best;
+      const g = { below: "below your best", about: "about your best", beat: "beat your best" }[state.guess];
+      const last = state.round === 3;
+      return `${title("Personal Best Board", "home")}
+      <p class="big center">${diff > 0 ? "New personal best!" : "Nice work!"}</p>
+      <div class="chart"><div><i style="height:${Math.round(best / 2400 * 140)}px;background:var(--light)"></i></div><div><i style="height:${Math.round(s / 2400 * 140)}px;background:var(--btn)"></i></div></div>
+      <div class="chart-labels"><span>Best<br>1,800</span><span>Today<br>${s.toLocaleString()}</span></div>
+      <p class="note">${g ? `You guessed: ${g}.<br>` : ""}You beat your best by ${diff.toLocaleString()}.</p>
+      <p class="label">Was this level...</p>
+      <div class="seg">${["Too easy", "About right", "Too hard"].map((l, i) => `<button data-feel="${l}" aria-pressed="${i === 1}">${l}</button>`).join("")}</div>
+      <div class="spacer"></div>
+      <button class="btn" data-go="${last ? "done" : "next"}">${last ? "Finish session" : "Next game"}</button>
+      <button class="btn light" data-go="buddy">Train with a buddy</button>`;
+    }
+  },
+  done: {
+    label: "6 · Session complete",
+    note: "Tap See Brain Buddy or go back home.",
+    html: () => `${title("Great session!", "home")}
+      <svg class="trophy" viewBox="0 0 24 24"><path d="M7 3h10v5a5 5 0 0 1-10 0z" fill="var(--gold)"/><rect x="11" y="13" width="2" height="4" fill="var(--gold)"/><rect x="8" y="17" width="8" height="3" rx="1" fill="var(--gold)"/></svg>
+      <p class="big">This session:</p>
+      <ul class="checks"><li>3 ${state.skill} games at ${state.level}</li><li>1 new personal best (2,240)</li><li>Your guess was close</li></ul>
+      <p class="note">Next time: try ${state.level === "Stretch" ? "a new skill" : LEVELS[LEVELS.indexOf(state.level) + 1]}?</p>
+      <div class="spacer"></div>
+      <button class="btn" data-go="buddy">See Brain Buddy</button>
+      <button class="btn light" data-go="home2">Back to Home</button>`
+  },
+  buddy: {
+    label: "7 · Brain Buddy (optional)",
+    note: "Check your friends, then tap Send a cheer.",
+    html: () => `${title("Brain Buddy", "home")}
+      <div class="seg two"><button data-tab="goal" aria-pressed="${state.tab === "goal"}">Shared goal</button><button data-tab="board" aria-pressed="${state.tab === "board"}">Friends leaderboard</button></div>
+      ${state.tab === "goal" ? `
+      <p class="muted">This week's shared goal</p>
+      <p class="big" style="margin-top:-8px">5 sessions each</p>
+      <div><div class="bar-row"><span>You</span><span>4/5</span></div><div class="progress"><span style="width:80%"></span></div></div>
+      <div><div class="bar-row"><span>Jordan</span><span>2/5</span></div><div class="progress"><span style="width:40%"></span></div></div>
+      <p class="note">Jordan cheered you on yesterday.</p>` : state.board ? `
+      <p class="muted">Sessions this week · friends only</p>
+      <ol class="board">${FRIENDS.map(([n, v], i) => `<li class="${n === "You" ? "me" : ""}"><span class="rank">${i + 1}</span><span class="av">${n[0]}</span><span class="nm">${n}</span><span class="pts">${v} session${v === 1 ? "" : "s"}</span></li>`).join("")}</ol>
+      <p class="note">Ranked by sessions played, not scores, so everyone can climb by showing up.</p>
+      <button class="btn text" data-board="off">Hide leaderboard</button>` : `
+      <p class="note">Leaderboard hidden. You'll only see your shared goal.</p>
+      <button class="btn light" data-board="on">Show leaderboard</button>`}
+      <div class="spacer"></div>
+      <button class="btn" data-cheer>Send a cheer</button>
+      <button class="btn light" data-toast="Invite link copied">Invite a friend</button>
+      <button class="btn text" data-go="home2">Not now</button>
+      <p class="muted center">Friends only · no public leaderboard</p>`
+  },
+  home2: {
+    label: "8 · Back to Home", nav: "Home",
+    note: "Done! Tap Restart to try again.",
+    html: () => `${appbar()}
+      ${state.cheered ? `<div class="banner">✓ Cheer sent to Jordan</div>` : ""}
+      <div class="tile-card"><b>Today's Workout</b><p class="muted">3 games · set by the app · about 10 mins</p></div>
+      <button class="row" data-go="choose"><span class="dot">${svg("target")}</span><span class="txt"><b>Train Your Way</b><span class="muted">Best: 2,240 · try ${state.level === "Stretch" ? "a new skill" : LEVELS[LEVELS.indexOf(state.level) + 1]} next</span></span><span class="chev">›</span></button>
+      <button class="row" data-go="buddy"><span class="dot">${svg("people")}</span><span class="txt"><b>Brain Buddy</b><span class="muted">You 4/5 · Jordan 2/5 this week</span></span><span class="chev">›</span></button>`
+  }
+};
+
+const el = document.getElementById("screen");
+let cur = "home";
+
+function toast(msg) {
+  const t = document.createElement("div");
+  t.className = "toast"; t.setAttribute("role", "status"); t.textContent = msg;
+  el.appendChild(t);
+  setTimeout(() => t.remove(), 1600);
+}
+
+function show(name) {
+  if (name === "next") { state.round = Math.min(3, state.round + 1); name = "game"; }
+  cur = name;
+  const s = screens[name];
+  document.getElementById("label").innerHTML = `<b>${typeof s.label === "function" ? s.label() : s.label}</b>`;
+  el.innerHTML = statusBar() + `<div class="body">${s.html()}</div>` + (s.nav ? nav(s.nav) : "");
+  document.getElementById("notes").innerHTML = s.note;
+  el.querySelectorAll("[data-go]").forEach(b => b.onclick = () => show(b.dataset.go));
+  el.querySelectorAll("[data-skill]").forEach(b => b.onclick = () => { state.skill = b.dataset.skill; show("choose"); });
+  el.querySelectorAll("[data-level]").forEach(b => b.onclick = () => { state.level = b.dataset.level; show("choose"); });
+  el.querySelectorAll("[data-surprise]").forEach(b => b.onclick = () => {
+    state.skill = SKILLS[Math.floor(Math.random() * SKILLS.length)][0];
+    state.level = LEVELS[Math.floor(Math.random() * LEVELS.length)];
+    show("guess");
+  });
+  el.querySelectorAll("[data-guess]").forEach(b => b.onclick = () => { state.guess = b.dataset.guess === "skip" ? null : b.dataset.guess; state.round = 1; show("game"); });
+  el.querySelectorAll("[data-feel]").forEach(b => b.onclick = () => {
+    el.querySelectorAll("[data-feel]").forEach(x => x.setAttribute("aria-pressed", "false"));
+    b.setAttribute("aria-pressed", "true");
+    const f = b.dataset.feel, i = LEVELS.indexOf(state.level);
+    if (f === "Too easy" && i < 2) state.level = LEVELS[i + 1];
+    if (f === "Too hard" && i > 0) state.level = LEVELS[i - 1];
+    toast(f === "About right" ? `Staying at ${state.level}` : `Next game: ${state.level}`);
+  });
+  el.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; show("buddy"); });
+  el.querySelectorAll("[data-board]").forEach(b => b.onclick = () => { state.board = b.dataset.board === "on"; show("buddy"); });
+  el.querySelectorAll("[data-cheer]").forEach(b => b.onclick = () => { state.cheered = true; show("home2"); });
+  el.querySelectorAll("[data-toast]").forEach(b => b.onclick = () => toast(b.dataset.toast));
+  el.querySelectorAll("[data-nav]").forEach(b => b.onclick = () => {
+    if (b.dataset.nav === "Home") show(state.cheered ? "home2" : "home");
+    else toast(`${b.dataset.nav} isn't part of this prototype`);
+  });
+}
+
+document.getElementById("restart").onclick = () => { Object.assign(state, { skill: "Memory", level: "Push", guess: "about", round: 1, cheered: false, tab: "goal", board: true }); show("home"); };
+show("home");
+</script>
+
+</body></html>
